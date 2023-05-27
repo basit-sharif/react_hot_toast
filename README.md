@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+React-hot-toast
 
-## Getting Started
+install next js application
 
-First, run the development server:
+(Take a look at react-hot-toas library)[https://react-hot-toast.com/docs]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm
+```terminal
+npm install react-hot-toast
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+yarn
+```terminal
+yarn install react-hot-toast
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+import it 
+```typescript
+import toast, { Toaster } from 'react-hot-toast';
+```
 
-## Learn More
+make its function that takes message 
+```typescript
+const notify = (message:string) => toast(message);
+```
 
-To learn more about Next.js, take a look at the following resources:
+use it in tsx :
+```typescript
+<button onClick={notify}>Make me a toast</button>
+<Toaster />
+```
+make sure that you are in client component beacuse it runs only on client side due to it's funciton that is obviously can called on client side
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+you can also modify toasted pop up and there are two way one is to modify in function "notify" and second is to modify in component 
+```typescript
+<Toaster
+position="top-center" //spacify position
+reverseOrder={false}   //change its order of representing
+gutter={8} //spaces between one and second
+toastOptions={{
+    duration: 3000, //duration
+    style: { //some styling
+        background: '#363636',
+        color: '#fff',
+    },
+}}
+/>
+```
